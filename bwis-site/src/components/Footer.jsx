@@ -33,22 +33,25 @@ const Footer = () => {
       <div className="footer-middle-section">
         <div className="footer-middle-inner">
           <div className="footer-column">
-            <h4>OUR PROGRAMMES</h4>
+            <h4>QUICK LINKS</h4>
             <ul>
-              <li><Link to="/academics">Playgroup</Link></li>
-              <li><Link to="/academics">LKG &amp; UKG</Link></li>
-              <li><Link to="/academics">Primary (Grades 1-5)</Link></li>
-              <li><Link to="/academics">Secondary (Grades 6-11)</Link></li>
+              <li><Link to="/news-events">News &amp; Events</Link></li>
+              <li><Link to="/gallery">Gallery</Link></li>
+              <li><Link to="/alumni">Alumni</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
+              <li><Link to="/downloads">Downloads</Link></li>
+              <li><Link to="/school-calendar">School Calendar</Link></li>
             </ul>
           </div>
 
           <div className="footer-column">
             <h4>EXPLORE MORE</h4>
             <ul>
-              <li><Link to="/careers">Careers</Link></li>
-              <li><Link to="/news-events">News &amp; Events</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/parent-handbook">Parent Handbook</Link></li>
+              <li><Link to="/policies">Policies</Link></li>
+              <li><Link to="/code-of-conduct">Code of Conduct</Link></li>
+              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms &amp; Conditions</Link></li>
             </ul>
           </div>
 

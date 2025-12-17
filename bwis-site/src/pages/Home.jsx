@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getNewsEvents } from '../utils/storage.js';
 
 const Home = () => {
   const heroImages = [
@@ -110,32 +111,61 @@ const Home = () => {
             <h2>Latest News &amp; Events</h2>
             <p>Stay updated with what&apos;s happening on campus.</p>
           </div>
-          <div className="grid-3">
-            <article className="news-card">
-              {/* TODO: Add real event image here */}
-              {/* <img src="/images/event-1.jpg" alt="Sports Day 2025" /> */}
-              <h3>Annual Sports Meet 2025</h3>
-              <p>Students showcased team spirit, talent, and sportsmanship at the annual sports meet.</p>
-              <span className="news-meta">March 2025</span>
-            </article>
-            <article className="news-card">
-              {/* TODO: Add real event image here */}
-              <h3>STEAM Innovation Fair</h3>
-              <p>Young innovators presented creative projects in science, technology, engineering, arts, and maths.</p>
-              <span className="news-meta">February 2025</span>
-            </article>
-            <article className="news-card">
-              {/* TODO: Add real event image here */}
-              <h3>Cultural Diversity Day</h3>
-              <p>A colourful celebration of cultures, languages, and traditions from around the world.</p>
-              <span className="news-meta">January 2025</span>
-            </article>
-          </div>
-          <div className="section-cta-center">
-            <Link to="/news-events" className="link-arrow">
-              View all news &amp; events
-            </Link>
-          </div>
+          {(() => {
+            const latestEvents = getNewsEvents().slice(0, 3);
+            return latestEvents.length === 0 ? (
+              <div className="grid-3">
+                <article className="news-card">
+                  <h3>Annual Sports Meet 2025</h3>
+                  <p>Students showcased team spirit, talent, and sportsmanship at the annual sports meet.</p>
+                  <span className="news-meta">March 2025</span>
+                </article>
+                <article className="news-card">
+                  <h3>STEAM Innovation Fair</h3>
+                  <p>Young innovators presented creative projects in science, technology, engineering, arts, and maths.</p>
+                  <span className="news-meta">February 2025</span>
+                </article>
+                <article className="news-card">
+                  <h3>Cultural Diversity Day</h3>
+                  <p>A colourful celebration of cultures, languages, and traditions from around the world.</p>
+                  <span className="news-meta">January 2025</span>
+                </article>
+              </div>
+            ) : (
+              <>
+                <div className="grid-3">
+                  {latestEvents.map((event) => (
+                    <article key={event.id} className="news-card">
+                      {event.image && (
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1rem' }}
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                        />
+                      )}
+                      <h3>{event.title}</h3>
+                      <p>{event.description}</p>
+                      <span className="news-meta">
+                        {new Date(event.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </article>
+                  ))}
+                </div>
+                <div className="section-cta-center">
+                  <Link to="/news-events" className="link-arrow">
+                    View all news &amp; events
+                  </Link>
+                </div>
+              </>
+            );
+          })()}
         </section>
 
         <section className="section testimonials">

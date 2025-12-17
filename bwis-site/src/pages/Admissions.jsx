@@ -1,6 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { saveAdmissionsEnquiry } from '../utils/storage.js';
 
 const Admissions = () => {
+  const [formData, setFormData] = useState({
+    parentName: '',
+    studentName: '',
+    gradeApplying: '',
+    phone: '',
+    email: '',
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    saveAdmissionsEnquiry(formData);
+    setSubmitted(true);
+    setFormData({
+      parentName: '',
+      studentName: '',
+      gradeApplying: '',
+      phone: '',
+      email: '',
+      message: '',
+    });
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
   return (
     <div className="page admissions-page">
       <section className="page-hero">
@@ -67,18 +93,42 @@ const Admissions = () => {
       <section className="section" id="visit">
         <h2>Admission Enquiry Form</h2>
         <p>Please fill in the form below and our admissions team will contact you.</p>
-        <form className="form-grid" onSubmit={(e) => e.preventDefault()}>
+        {submitted && (
+          <div style={{ background: '#d1fae5', color: '#065f46', padding: '1rem', borderRadius: '8px', marginBottom: '1rem' }}>
+            Thank you! Your enquiry has been submitted. We will contact you soon.
+          </div>
+        )}
+        <form className="form-grid" onSubmit={handleSubmit}>
           <div className="form-field">
             <label htmlFor="parentName">Parent / Guardian Name</label>
-            <input id="parentName" type="text" placeholder="Enter full name" required />
+            <input
+              id="parentName"
+              type="text"
+              placeholder="Enter full name"
+              value={formData.parentName}
+              onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+              required
+            />
           </div>
           <div className="form-field">
             <label htmlFor="studentName">Student Name</label>
-            <input id="studentName" type="text" placeholder="Enter student name" required />
+            <input
+              id="studentName"
+              type="text"
+              placeholder="Enter student name"
+              value={formData.studentName}
+              onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
+              required
+            />
           </div>
           <div className="form-field">
             <label htmlFor="gradeApplying">Grade Applying For</label>
-            <select id="gradeApplying" required>
+            <select
+              id="gradeApplying"
+              value={formData.gradeApplying}
+              onChange={(e) => setFormData({ ...formData, gradeApplying: e.target.value })}
+              required
+            >
               <option value="">Select grade</option>
               <option>Playgroup</option>
               <option>LKG</option>
@@ -98,15 +148,34 @@ const Admissions = () => {
           </div>
           <div className="form-field">
             <label htmlFor="phone">Contact Number</label>
-            <input id="phone" type="tel" placeholder="Enter mobile number" required />
+            <input
+              id="phone"
+              type="tel"
+              placeholder="Enter mobile number"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              required
+            />
           </div>
           <div className="form-field">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" placeholder="Enter email" />
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
           </div>
           <div className="form-field full-width">
             <label htmlFor="message">Additional Details</label>
-            <textarea id="message" rows="4" placeholder="Tell us more about your child or questions you have" />
+            <textarea
+              id="message"
+              rows="4"
+              placeholder="Tell us more about your child or questions you have"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            />
           </div>
           <div className="form-actions">
             <button type="submit" className="btn btn-primary">

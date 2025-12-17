@@ -1,6 +1,7 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Academics from './pages/Academics.jsx';
@@ -19,11 +20,21 @@ import CodeOfConduct from './pages/CodeOfConduct.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import Terms from './pages/Terms.jsx';
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
+import Login from './pages/admin/Login.jsx';
 
 function App() {
   return (
     <Routes>
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/login" element={<Login />} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
       <Route
         path="/*"
         element={

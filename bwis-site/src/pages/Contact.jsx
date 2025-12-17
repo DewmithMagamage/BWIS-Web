@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { saveContactMessage } from '../utils/storage.js';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    saveContactMessage(formData);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
   return (
     <div className="page contact-page">
       <section className="page-hero">
@@ -30,22 +47,55 @@ const Contact = () => {
           </div>
           <div>
             <h2>Send Us a Message</h2>
-            <form className="form-grid" onSubmit={(e) => e.preventDefault()}>
+            {submitted && (
+              <div style={{ background: '#d1fae5', color: '#065f46', padding: '1rem', borderRadius: '8px', marginBottom: '1rem' }}>
+                Thank you! Your message has been sent. We will get back to you soon.
+              </div>
+            )}
+            <form className="form-grid" onSubmit={handleSubmit}>
               <div className="form-field">
                 <label htmlFor="name">Name</label>
-                <input id="name" type="text" placeholder="Your name" required />
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
               </div>
               <div className="form-field">
                 <label htmlFor="contactEmail">Email</label>
-                <input id="contactEmail" type="email" placeholder="Your email" required />
+                <input
+                  id="contactEmail"
+                  type="email"
+                  placeholder="Your email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
               </div>
               <div className="form-field">
                 <label htmlFor="subject">Subject</label>
-                <input id="subject" type="text" placeholder="How can we help you?" required />
+                <input
+                  id="subject"
+                  type="text"
+                  placeholder="How can we help you?"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  required
+                />
               </div>
               <div className="form-field full-width">
                 <label htmlFor="contactMessage">Message</label>
-                <textarea id="contactMessage" rows="4" placeholder="Write your message here" required />
+                <textarea
+                  id="contactMessage"
+                  rows="4"
+                  placeholder="Write your message here"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                />
               </div>
               <div className="form-actions">
                 <button type="submit" className="btn btn-primary">
