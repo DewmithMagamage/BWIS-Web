@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="navbar">
@@ -15,7 +16,17 @@ const Navbar = () => {
             className="navbar-logo"
           />
         </div>
-        <nav className="navbar-links">
+        <button
+          className="navbar-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span className="navbar-toggle-bar" />
+          <span className="navbar-toggle-bar" />
+          <span className="navbar-toggle-bar" />
+        </button>
+        <nav className={`navbar-links ${menuOpen ? 'open' : ''}`}>
           <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             Home
           </NavLink>

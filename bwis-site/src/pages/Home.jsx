@@ -31,7 +31,7 @@ const Home = () => {
         }}
       >
         <div className="hero-content">
-          <h1>Shaping Global Citizens at British Way International School – Nittambuwa</h1>
+          <h1>British Way International School – Nittambuwa</h1>
           <p>
             A modern international school in Nittambuwa offering a student-centered education, strong values, and
             world-class learning experiences.
