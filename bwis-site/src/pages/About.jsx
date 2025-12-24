@@ -23,9 +23,7 @@ const About = () => {
             </p>
           </div>
           <div>
-            {/* TODO: Add real photo of school campus or students here */}
-            {/* <img src="/images/about-campus.jpg" alt="British Way International School – Nittambuwa campus" /> */}
-            <div className="image-placeholder">School / Campus Image</div>
+            <img src="/images/aboutus.png" alt="British Way International School – Nittambuwa campus" />
           </div>
         </div>
       </section>
@@ -34,17 +32,11 @@ const About = () => {
         <div className="grid-3">
           <div>
             <h3>Our Vision</h3>
-            <p>
-              To nurture confident, compassionate, and globally-minded citizens who are prepared to excel in an
-              ever-changing world.
-            </p>
+            <p>Enabling the students to become well-disciplined and equipped citizens who can face the future global world.</p>
           </div>
           <div>
             <h3>Our Mission</h3>
-            <p>
-              To provide an inspiring, inclusive, and safe learning environment where students achieve academic
-              excellence and develop strong moral values.
-            </p>
+            <p>Providing opportunities and exposure through a process of activities in English to help students to face future challenges by developing their competencies.</p>
           </div>
           <div>
             <h3>Our Values</h3>
@@ -56,21 +48,29 @@ const About = () => {
       <section className="section">
         <div className="two-column">
           <div>
-            <h2>Principal&apos;s Message</h2>
+            <h2>Chairman&apos;s Message</h2>
+            <p>Dear Students,</p>
             <p>
-              “At British Way International School – Nittambuwa, we believe every child is unique. Our role is to guide
-              them, challenge them, and support them as they discover who they are and who they can become.”
+              As we begin another exciting month, I encourage you to embrace innovation, set clear future goals, and focus on effective execution. Innovation starts with creative thinking, so don’t be afraid to explore new ideas in your studies and activities.
             </p>
             <p>
-              “We are committed to maintaining high academic standards while ensuring that students feel happy, safe,
-              and motivated to learn every day.”
+              Setting meaningful goals will give you direction and motivation, while turning those goals into action requires dedication, perseverance, and a positive mindset.
             </p>
-            <p className="principal-signature">Principal, BWIS Nittambuwa</p>
+            <p>
+              Remember, every great journey begins with a single step. Let’s move forward together, supporting one another and striving for success.
+            </p>
+            <p>
+              Wishing you a month filled with creativity, determination, and achievement.
+            </p>
+            <p className="principal-signature">
+              Warm regards,<br />
+              Dr. Shantha Geethadewa.<br />
+              Chairman<br />
+              British Way Holdings (PVT) LTD.
+            </p>
           </div>
           <div>
-            {/* TODO: Add professional portrait of Principal */}
-            {/* <img src="/images/principal.jpg" alt="Principal of British Way International School – Nittambuwa" /> */}
-            <div className="image-placeholder">Principal Photo</div>
+            <div className="image-placeholder">Chairman Photo</div>
           </div>
         </div>
       </section>

@@ -30,20 +30,30 @@ const Contact = () => {
           <div>
             <h2>Nittambuwa Campus</h2>
             <p>British Way International School – Nittambuwa</p>
-            <p>Nittambuwa, Sri Lanka</p>
+            <p>5, Kandy Road, Nittambuwa, Sri Lanka</p>
             <p>
-              Phone: <a href="tel:+94XXXXXXXXX">+94 XX XXX XXXX</a>
+              Phone: <a href="tel:+94715500900">071 550 0900</a>
             </p>
             <p>
-              Email: <a href="mailto:info@bwisnittambuwa.lk">info@bwisnittambuwa.lk</a>
+              Email: <a href="mailto:bwinternationalschool@gmail.com">bwinternationalschool@gmail.com</a>
             </p>
             <p>Office Hours: Monday – Friday, 8.00 a.m. to 4.00 p.m.</p>
 
             <h3>Social Media</h3>
-            <p>
-              {/* TODO: Replace # with real social links */}
-              <a href="#">Facebook</a> · <a href="#">Instagram</a> · <a href="#">YouTube</a>
-            </p>
+            <div className="footer-social">
+              <a href="#" aria-label="Facebook">
+                <img src="/images/Facebook.png" alt="Facebook" />
+              </a>
+              <a href="https://instagram.com/britishway_international" aria-label="Instagram">
+                <img src="/images/Instergram.png" alt="Instagram" />
+              </a>
+              <a href="https://youtube.com/%40bwinternationalschool" aria-label="YouTube">
+                <img src="/images/Youtube.png" alt="YouTube" />
+              </a>
+              <a href="#" aria-label="TikTok">
+                <img src="/images/Tiktok.png" alt="TikTok" />
+              </a>
+            </div>
           </div>
           <div>
             <h2>Send Us a Message</h2>

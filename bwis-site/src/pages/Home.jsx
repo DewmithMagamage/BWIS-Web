@@ -1,38 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { getNewsEvents } from '../utils/storage.js';
 
 const Home = () => {
-  const heroImages = [
-    // TODO: Replace these paths with real campus / student photos.
-    // Example (after you copy images into public/images):
-    // '/images/hero-1.jpg',
-    // '/images/hero-2.jpg',
-    // '/images/hero-3.jpg',
-    '/images/hero-1.png',
-    '/images/hero-2.png',
-    '/images/hero-3.jpg',
-  ];
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // change every 5 seconds
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
-
   return (
     <div className="home-page">
-      <section
-        className="hero hero-full"
-        style={{
-          backgroundImage: `linear-gradient(120deg, rgba(11, 37, 69, 0.82), rgba(11, 37, 69, 0.35)), url(${heroImages[currentSlide]})`,
-        }}
-      >
+      <section className="hero hero-full">
+        <video
+          className="hero-video"
+          src="/images/BWS Flag.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         <div className="hero-content">
-          <h1>British Way International School – Nittambuwa</h1>
+          <h1>Shaping Global Citizens at British Way International School – Nittambuwa</h1>
           <p>
             A modern international school in Nittambuwa offering a student-centered education, strong values, and
             world-class learning experiences.
@@ -45,17 +28,6 @@ const Home = () => {
               Book a Campus Visit
             </Link>
           </div>
-        </div>
-        <div className="hero-dots hero-dots-overlay">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`hero-dot ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
         </div>
       </section>
 
